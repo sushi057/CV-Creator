@@ -16,6 +16,12 @@ export default class Preview extends Component {
             <li>Travel</li>
           </ul>
         </div>
+
+        <div className="main-section">
+          <div className="summary">Lorem Ipsum</div>
+          <div className="education">edu</div>
+          <div className="experience">exp</div>
+        </div>
       </>
     );
   }

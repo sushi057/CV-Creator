@@ -10,27 +10,27 @@ export default class General extends Component {
         lastName: "",
         phone: "",
         email: "",
-        hobby: {
-          hob1: "",
-          hob2: "",
-          hob3: "",
-          hob4: "",
-        },
+        linkedin: "",
       },
     };
   }
   handleChange = (e) => {
-    this.setState({});
+    const name = e.target.name;
+    this.setState({
+      [name]: e.target.value,
+    });
+    console.log(e);
   };
   render() {
-    const { firstName, lastName, phone, email, hobby } = this.state;
+    const { firstName, lastName, phone, email, linkedin } = this.state;
     return (
-      <>
+      <div className="general-section">
         <label for="fname">
           First Name
           <input
             type="text"
             id="fname"
+            name="firstName"
             value={firstName}
             onChange={this.handleChange}
           />
@@ -40,6 +40,7 @@ export default class General extends Component {
           <input
             type="text"
             id="lname"
+            name="lastName"
             value={lastName}
             onChange={this.handleChange}
           />
@@ -49,6 +50,7 @@ export default class General extends Component {
           <input
             type="email"
             id="email"
+            name="email"
             value={email}
             onChange={this.handleChange}
           />
@@ -58,11 +60,22 @@ export default class General extends Component {
           <input
             type="number"
             id="phone"
+            name="phone"
             value={phone}
             onChange={this.handleChange}
           />
         </label>
-      </>
+        <label for="fname">
+          Linkedin
+          <input
+            type="text"
+            id="linkedin"
+            name="linkedIn"
+            value={linkedin}
+            onChange={this.handleChange}
+          />
+        </label>
+      </div>
     );
   }
 }

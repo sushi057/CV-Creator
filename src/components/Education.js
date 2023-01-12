@@ -36,6 +36,7 @@ export default class Education extends Component {
 
     return (
       <div className="education-section">
+        <h2>Education</h2>
         <form onSubmit={this.onSubmitForm}>
           <label for="startyear">
             Start Year

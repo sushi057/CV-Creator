@@ -36,6 +36,7 @@ export default class Experience extends Component {
 
     return (
       <div className="experience-section">
+        <h2>Experience</h2>
         <form onSubmit={this.onSubmitForm}>
           <label for="startyear">
             Start Year

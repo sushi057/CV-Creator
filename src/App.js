@@ -1,10 +1,6 @@
-import General from "./components/General";
-import Education from "./components/Education";
-import Experience from "./components/Experience";
-import Preview from "./components/Preview";
-import Summary from "./components/Summary";
 import { Component } from "react";
-
+import Input from "./components/Input";
+import Preview from "./components/Preview";
 class App extends Component {
   constructor() {
     super();
@@ -23,13 +19,14 @@ class App extends Component {
 
   render() {
     const { editState } = this.state;
+    const general = { firstName, lastName, email, phone };
 
     return (
       <>
         <h1>CV Cretaor</h1>
         {!editState && (
           <div>
-            <Preview />
+            <Preview general={general} />
             <button type="button" onClick={this.handleChange}>
               Edit
             </button>
@@ -37,10 +34,7 @@ class App extends Component {
         )}
         {editState && (
           <div>
-            <General />
-            <Summary />
-            <Education />
-            <Experience />
+            <Input />
             <button type="button" onClick={this.handleChange}>
               Preview
             </button>

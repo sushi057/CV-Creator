@@ -13,8 +13,10 @@ export default class Preview extends Component {
         </div>
 
         <div className="main-section">
-          <div className="summary">Lorem ipsum</div>
-          <div className="education">edu</div>
+          <div className="summary">{this.props.summary}</div>
+          <div className="education">
+            
+          </div>
           <div className="experience">exp</div>
         </div>
       </>

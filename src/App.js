@@ -1,33 +1,28 @@
 import { Component } from "react";
 import Preview from "./components/Preview";
-import Education from "./components/Education";
-import Experience from "./components/Experience";
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
       editState: false,
-      general: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        linkedin: "",
-      },
+
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      linkedin: "",
       summary: "",
-      education: {
-        startYear: "",
-        endYear: "",
-        college: "",
-        level: "",
-      },
-      experience: {
-        startYear: "",
-        lastYear: "",
-        company: "",
-        position: "",
-      },
+
+      edu_startYear: "",
+      edu_endYear: "",
+      college: "",
+      level: "",
+
+      exp_startYear: "",
+      exp_lastYear: "",
+      company: "",
+      position: "",
     };
   }
 
@@ -41,9 +36,7 @@ class App extends Component {
   handleChange = (e) => {
     const name = e.target.name;
     this.setState({
-      general: {
-        [name]: e.target.value,
-      },
+      [name]: e.target.value,
     });
   };
 
@@ -52,7 +45,23 @@ class App extends Component {
   };
 
   render() {
-    const { editState, general, summary, education, experience } = this.state;
+    const {
+      editState,
+      firstName,
+      lastName,
+      phone,
+      email,
+      linkedin,
+      summary,
+      edu_startYear,
+      edu_endYear,
+      college,
+      level,
+      exp_startYear,
+      exp_lastYear,
+      company,
+      position,
+    } = this.state;
 
     return (
       <>
@@ -60,10 +69,20 @@ class App extends Component {
         {!editState && (
           <div>
             <Preview
-              general={general}
+              firstName={firstName}
+              lastName={lastName}
+              phone={phone}
+              email={email}
+              linkedin={linkedin}
               summary={summary}
-              education={education}
-              experience={experience}
+              edu_startYear={edu_startYear}
+              edu_endYear={edu_endYear}
+              college={college}
+              level={level}
+              exp_startYear={exp_startYear}
+              exp_lastYear={exp_lastYear}
+              company={company}
+              position={position}
             />
             <button type="button" onClick={this.handleButtonClick}>
               Edit
@@ -81,7 +100,7 @@ class App extends Component {
                       type="text"
                       id="fname"
                       name="firstName"
-                      value={general.firstName}
+                      value={firstName}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -91,7 +110,7 @@ class App extends Component {
                       type="text"
                       id="lname"
                       name="lastName"
-                      value={general.lastName}
+                      value={lastName}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -101,7 +120,7 @@ class App extends Component {
                       type="email"
                       id="email"
                       name="email"
-                      value={general.email}
+                      value={email}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -111,7 +130,7 @@ class App extends Component {
                       type="number"
                       id="phone"
                       name="phone"
-                      value={general.phone}
+                      value={phone}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -120,29 +139,32 @@ class App extends Component {
                     <input
                       type="text"
                       id="linkedin"
-                      name="linkedIn"
-                      value={general.linkedin}
+                      name="linkedin"
+                      value={linkedin}
                       onChange={this.handleChange}
                     />
                   </label>
                 </form>
               </div>
+
               <div className="summary-section">
                 <h2>Summary</h2>
                 <textarea
+                  name="summary"
                   value={summary}
                   onChange={this.handleChange}
                 ></textarea>
               </div>
-              <div className="eductaion-section">
+
+              <div className="education-section">
                 <h2>Education</h2>
                 <label for="startyear">
                   Start Year
                   <input
                     type="number"
                     id="startyear"
-                    name="startYear"
-                    value={education.startYear}
+                    name="edu_startYear"
+                    value={edu_startYear}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -151,8 +173,8 @@ class App extends Component {
                   <input
                     type="number"
                     id="endyear"
-                    name="endYear"
-                    value={education.endYear}
+                    name="edu_endYear"
+                    value={edu_endYear}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -161,8 +183,8 @@ class App extends Component {
                   <input
                     type="text"
                     id="name"
-                    name="name"
-                    value={education.college}
+                    name="college"
+                    value={college}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -172,11 +194,12 @@ class App extends Component {
                     type="text"
                     id="level"
                     name="level"
-                    value={education.level}
+                    value={level}
                     onChange={this.handleChange}
                   />
                 </label>
               </div>
+
               <div className="experience-section">
                 <h2>Experience</h2>
                 <label for="startyear">
@@ -184,8 +207,8 @@ class App extends Component {
                   <input
                     type="number"
                     id="startyear"
-                    name="startYear"
-                    value={experience.startYear}
+                    name="exp_startYear"
+                    value={exp_startYear}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -194,8 +217,8 @@ class App extends Component {
                   <input
                     type="number"
                     id="endyear"
-                    name="endYear"
-                    value={experience.endYear}
+                    name="exp_lastYear"
+                    value={exp_lastYear}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -204,8 +227,8 @@ class App extends Component {
                   <input
                     type="text"
                     id="name"
-                    name="name"
-                    value={experience.company}
+                    name="company"
+                    value={company}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -215,15 +238,16 @@ class App extends Component {
                     type="text"
                     id="position"
                     name="position"
-                    value={experience.position}
+                    value={position}
                     onChange={this.handleChange}
                   />
                 </label>
               </div>
+
+              <button type="submit" onClick={this.handleButtonClick}>
+                Preview
+              </button>
             </form>
-            <button type="submit" onClick={this.handleButtonClick}>
-              Preview
-            </button>
           </div>
         )}
       </>

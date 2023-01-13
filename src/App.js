@@ -31,31 +31,48 @@ class App extends Component {
     };
   }
 
-  handleChange = (e) => {
+  handleButtonClick = (e) => {
     this.setState({
       editState: !this.state.editState,
     });
     console.log(this.editState);
   };
 
+  handleChange = (e) => {
+    const name = e.target.name;
+    this.setState({
+      general: {
+        [name]: e.target.value,
+      },
+    });
+  };
+
+  onSubmitForm = (e) => {
+    e.preventDefault();
+  };
+
   render() {
     const { editState, general, summary, education, experience } = this.state;
-    
 
     return (
       <>
         <h1>CV Cretaor</h1>
         {!editState && (
           <div>
-            <Preview />
-            <button type="button" onClick={this.handleChange}>
+            <Preview
+              general={general}
+              summary={summary}
+              education={education}
+              experience={experience}
+            />
+            <button type="button" onClick={this.handleButtonClick}>
               Edit
             </button>
           </div>
         )}
         {editState && (
           <div>
-            <div>
+            <form onSubmit={this.onSubmitForm}>
               <div className="general-section">
                 <form onSubmit={this.onSubmitForm}>
                   <label for="fname">
@@ -112,12 +129,99 @@ class App extends Component {
               </div>
               <div className="summary-section">
                 <h2>Summary</h2>
-                <textarea value={summary} onChange={this.handleChange}></textarea>
+                <textarea
+                  value={summary}
+                  onChange={this.handleChange}
+                ></textarea>
               </div>
-              <Education />
-              <Experience />
-            </div>
-            <button type="button" onClick={this.handleChange}>
+              <div className="eductaion-section">
+                <h2>Education</h2>
+                <label for="startyear">
+                  Start Year
+                  <input
+                    type="number"
+                    id="startyear"
+                    name="startYear"
+                    value={education.startYear}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label for="endyear">
+                  End Year
+                  <input
+                    type="number"
+                    id="endyear"
+                    name="endYear"
+                    value={education.endYear}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label for="name">
+                  College
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={education.college}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label for="level">
+                  Level
+                  <input
+                    type="text"
+                    id="level"
+                    name="level"
+                    value={education.level}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+              <div className="experience-section">
+                <h2>Experience</h2>
+                <label for="startyear">
+                  Start Year
+                  <input
+                    type="number"
+                    id="startyear"
+                    name="startYear"
+                    value={experience.startYear}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label for="endyear">
+                  End Year
+                  <input
+                    type="number"
+                    id="endyear"
+                    name="endYear"
+                    value={experience.endYear}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label for="name">
+                  Company
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={experience.company}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label for="position">
+                  Position
+                  <input
+                    type="text"
+                    id="position"
+                    name="position"
+                    value={experience.position}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+            </form>
+            <button type="submit" onClick={this.handleButtonClick}>
               Preview
             </button>
           </div>
